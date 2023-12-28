@@ -1,4 +1,6 @@
-﻿
+﻿using Microsoft.EntityFrameworkCore;
+using GEVS_Backend.DbContexts;
+
 namespace GEVS_Backend;
 
 public class Program
@@ -10,6 +12,13 @@ public class Program
         // Add services to the container.
 
         builder.Services.AddControllers();
+
+        // Services such as the DB context must be registered with the DI container.
+        builder.Services.AddDbContext<VoterContext>(opt => opt.UseInMemoryDatabase("GEVS_Backend"));
+
+        // Add AutoMapper dependency
+        builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
