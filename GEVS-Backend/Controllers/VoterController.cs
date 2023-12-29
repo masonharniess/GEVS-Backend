@@ -21,7 +21,7 @@ namespace GEVS_Backend.Controllers
 			_mapper = mapper;
 		}
 
-		[HttpGet]
+		[HttpGet] // GETs collection of studios
 		public async Task<ActionResult<IEnumerable<VoterModel>>> GetVoters()
 		{
 			if (_context.Voters == null)
