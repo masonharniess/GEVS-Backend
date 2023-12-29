@@ -11,10 +11,10 @@ namespace GEVS_Backend.Controllers
     public class OfficerController : ControllerBase
     {
 
-        private readonly OfficerContext _context;
+        private readonly ElectionContext _context;
         private readonly IMapper _mapper;
 
-        public OfficerController(OfficerContext context, IMapper mapper)
+        public OfficerController(ElectionContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

@@ -14,9 +14,7 @@ public class Program
         builder.Services.AddControllers();
 
         // Services such as the DB context must be registered with the DI container.
-        builder.Services.AddDbContext<ElectionContext>(opt => opt.UseInMemoryDatabase("GEVS_Backend"));
-
-        builder.Services.AddDbContext<OfficerContext>(opt => opt.UseInMemoryDatabase("GEVS_Backend"));
+        builder.Services.AddDbContext<ElectionContext>(opt => opt.UseSqlite(builder.Configuration["ConnectionStrings:GEVS_Backend_Database"]));
 
         // Add AutoMapper dependency
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

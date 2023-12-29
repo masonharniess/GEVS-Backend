@@ -12,10 +12,10 @@ namespace GEVS_Backend.Controllers
 	public class VoterController : ControllerBase
 	{
 
-        private readonly VoterContext _context;
+        private readonly ElectionContext _context;
         private readonly IMapper _mapper;
 
-        public VoterController(VoterContext context, IMapper mapper)
+        public VoterController(ElectionContext context, IMapper mapper)
 		{
 			_context = context;
 			_mapper = mapper;
@@ -28,10 +28,10 @@ namespace GEVS_Backend.Controllers
 			{
 				return NotFound();
 			}
-
-            List<VoterEntity> voters = await _context.Voters.ToListAsync();
-
-            return Ok(_mapper.Map<List<VoterModel>>(voters));
-        }
+      
+      List<VoterEntity> voters = await _context.Voters.ToListAsync();
+      
+      return Ok(_mapper.Map<List<VoterModel>>(voters));
+    }
 	}
 }
